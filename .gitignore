@@ -1,0 +1,7 @@
+# Ignore everything except the shipped files
+*
+
+!.gitignore
+!index.html
+!README.md
+!LICENSE

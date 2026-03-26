@@ -38,12 +38,22 @@ Play English draughts against a minimax AI — entirely in your browser. No inst
 
 ## Part of the NakliTechie series
 
-Browser-native tools that answer *"why are you uploading that to a server?"*
-
 | Tool | What it does |
-|---|---|
-| [BabelLocal](https://github.com/NakliTechie/BabelLocal) | Translate text — 200 languages, runs offline |
-| [StripLocal](https://github.com/NakliTechie/StripLocal) | Strip EXIF metadata from photos |
-| [GambitLocal](https://github.com/NakliTechie/GambitLocal) | Chess vs Stockfish engine |
-| [VoiceVault](https://github.com/NakliTechie/VoiceVault) | Transcribe audio with Whisper |
-| **KingMe** | Checkers vs minimax AI |
+|------|--------------|
+| [**BabelLocal**](https://github.com/NakliTechie/BabelLocal) | Offline translation — 200 languages, NLLB model |
+| [**StripLocal**](https://github.com/NakliTechie/StripLocal) | EXIF metadata stripper — nothing leaves the browser |
+| [**GambitLocal**](https://github.com/NakliTechie/GambitLocal) | Chess vs Stockfish — correspondence mode via URL |
+| [**VoiceVault**](https://github.com/NakliTechie/VoiceVault) | Audio transcription — Whisper, offline-first |
+| **KingMe** | English draughts — custom minimax AI, zero deps |
+| [**SnipLocal**](https://github.com/NakliTechie/SnipLocal) | Background remover — RMBG-1.4, passport mode |
+| [**Clacker**](https://github.com/NakliTechie/Clacker) | Split-flap display — browser-native, offline |
+| [**Strait Command**](https://github.com/NakliTechie/strait-command) | Mine-clearing game in strategic waterways |
+| [**Chokepoint**](https://github.com/NakliTechie/chokepoint) | Maritime tower defense — hold the strait |
+| [**PredictionMarket**](https://github.com/NakliTechie/PredictionMarket) | Prediction market simulator — Parimutuel & LMSR |
+| **PDFLOcal** | PDF editor — merge, split, rotate, annotate |
+| **RangeLocal** | Missile range simulator — interactive globe & map |
+| [**3D Tic-Tac-Toe**](https://github.com/NakliTechie/3d-tic-tac-toe) | 3D tic-tac-toe — 3×3×3 to 5×5×5, minimax AI |
+
+---
+
+**Built by [Chirag Patnaik](https://github.com/NakliTechie)**

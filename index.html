@@ -6,12 +6,39 @@
   <meta name="author" content="Chirag Patnaik">
   <title>KingMe — Browser Checkers</title>
   <style>
+    /* Rangrez · scandinavia-02 · LIN — Nordic flax linen, summer cottage */
+    :root {
+      --body: #f0e8d4;
+      --panel: #f8f1de;
+      --row: #e6dcc0;
+      --line: #d8c8a8;
+      --ink: #2a1c08;
+      --ink-mid: #5a4018;
+      --ink-soft: #7a5a2a;
+      --ink-mute: #b89a68;
+      --brand: #9c3a28;
+      --brand-soft: #fde6c4;
+      --act: #1a5a6a;
+      --act-hover: #114048;
+      --act-tint: #e0eaed;
+      --ok: #2a5a3a;
+      --ok-soft: #e0eedf;
+      --warn: #c08018;
+      --board-light: #ede1c2;
+      --board-dark: #9a8060;
+      --board-king: #c9a045;
+      --board-sel: #4a7a8a;
+      --piece-red: #9c3a28;
+      --piece-red-edge: #5a200f;
+      --piece-black: #2a1c08;
+      --piece-black-edge: #0a0804;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f0f4f8;
-      color: #2d3748;
+      background: var(--body);
+      color: var(--ink);
       padding: 24px 16px;
       min-height: 100vh;
     }
@@ -26,7 +53,7 @@
       margin-bottom: 20px;
     }
 
-    h1 { font-size: 1.5rem; font-weight: 700; color: #1a202c; }
+    h1 { font-size: 1.5rem; font-weight: 700; color: var(--ink); }
 
     .badge {
       border-radius: 20px;
@@ -36,15 +63,15 @@
       border: 1px solid;
       transition: background 0.4s, border-color 0.4s, color 0.4s;
     }
-    .badge.your-turn { background: #e6fffa; border-color: #81e6d9; color: #234e52; }
-    .badge.ai-turn   { background: #fffbeb; border-color: #f6e05e; color: #744210; }
-    .badge.game-over { background: #ebf4ff; border-color: #667eea; color: #4c51bf; }
+    .badge.your-turn { background: var(--ok-soft); border-color: var(--ok); color: #1a3a18; }
+    .badge.ai-turn   { background: var(--brand-soft); border-color: var(--warn); color: #744210; }
+    .badge.game-over { background: var(--act-tint); border-color: var(--act); color: var(--act-hover); }
 
     /* ── Card ── */
     .card {
-      background: white;
+      background: var(--panel);
       border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 12px rgba(42,28,8,0.10);
       overflow: hidden;
       margin-bottom: 16px;
     }
@@ -54,7 +81,7 @@
       padding: 24px;
       display: flex;
       justify-content: center;
-      background: white;
+      background: var(--panel);
     }
 
     #board {
@@ -73,27 +100,27 @@
       align-items: center;
       gap: 8px;
       padding: 12px 16px;
-      background: #f8fafc;
-      border-top: 1px solid #e2e8f0;
+      background: var(--row);
+      border-top: 1px solid var(--line);
       flex-wrap: wrap;
     }
 
-    .controls label { font-size: 0.8rem; color: #718096; }
+    .controls label { font-size: 0.8rem; color: var(--ink-soft); }
 
     select {
       font-size: 0.88rem;
-      color: #2d3748;
-      border: 1px solid #e2e8f0;
+      color: var(--ink);
+      border: 1px solid var(--line);
       border-radius: 6px;
       padding: 5px 8px;
-      background: white;
+      background: var(--panel);
       cursor: pointer;
     }
-    select:focus { outline: none; box-shadow: 0 0 0 3px rgba(102,126,234,0.15); border-color: #667eea; }
+    select:focus { outline: none; box-shadow: 0 0 0 3px rgba(102,126,234,0.15); border-color: var(--act); }
 
     .btn {
-      background: #667eea;
-      color: white;
+      background: var(--act);
+      color: var(--panel);
       border: none;
       border-radius: 8px;
       padding: 9px 22px;
@@ -102,7 +129,7 @@
       cursor: pointer;
       transition: background 0.15s, opacity 0.15s;
     }
-    .btn:hover { background: #5a67d8; }
+    .btn:hover { background: var(--act-hover); }
     .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
     .btn-icon {
@@ -110,24 +137,24 @@
       border: none;
       border-radius: 6px;
       font-size: 0.78rem;
-      color: #718096;
+      color: var(--ink-soft);
       padding: 4px 8px;
       cursor: pointer;
       transition: background 0.15s, color 0.15s;
     }
-    .btn-icon:hover { background: #e2e8f0; color: #2d3748; }
+    .btn-icon:hover { background: var(--line); color: var(--ink); }
 
     /* ── Status bar ── */
     .status-bar {
       display: flex;
       gap: 20px;
       padding: 10px 16px;
-      background: #f8fafc;
-      border-top: 1px solid #e2e8f0;
+      background: var(--row);
+      border-top: 1px solid var(--line);
       font-size: 0.82rem;
-      color: #718096;
+      color: var(--ink-soft);
     }
-    .status-bar span { font-weight: 500; color: #2d3748; }
+    .status-bar span { font-weight: 500; color: var(--ink); }
 
     /* ── Captured pieces strip ── */
     .captures {
@@ -135,14 +162,14 @@
       align-items: center;
       gap: 4px;
       padding: 8px 16px;
-      background: white;
-      border-top: 1px solid #e2e8f0;
+      background: var(--panel);
+      border-top: 1px solid var(--line);
       min-height: 36px;
     }
-    .cap-label { font-size: 0.75rem; color: #a0aec0; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-right: 4px; }
+    .cap-label { font-size: 0.75rem; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-right: 4px; }
     .cap-dot { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
-    .cap-dot.red   { background: #c0392b; border: 1px solid #e74c3c; }
-    .cap-dot.black { background: #2c3e50; border: 1px solid #4a5568; }
+    .cap-dot.red   { background: var(--piece-red); border: 1px solid var(--piece-red-edge); }
+    .cap-dot.black { background: var(--piece-black); border: 1px solid var(--piece-black-edge); }
 
     /* ── Modal ── */
     .modal-backdrop {
@@ -160,9 +187,9 @@
     .modal-backdrop.open { opacity: 1; pointer-events: all; }
 
     .modal {
-      background: white;
+      background: var(--panel);
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      box-shadow: 0 8px 24px rgba(42,28,8,0.22);
       width: 100%;
       max-width: 440px;
       margin: 16px;
@@ -175,8 +202,8 @@
     .modal-header {
       display: flex;
       align-items: stretch;
-      background: #f8fafc;
-      border-bottom: 1px solid #e2e8f0;
+      background: var(--row);
+      border-bottom: 1px solid var(--line);
     }
 
     .modal-tabs { display: flex; flex: 1; }
@@ -188,18 +215,18 @@
       padding: 13px 18px;
       font-size: 0.88rem;
       font-weight: 500;
-      color: #718096;
+      color: var(--ink-soft);
       cursor: pointer;
       transition: color 0.15s, border-color 0.15s;
     }
-    .tab.active { color: #667eea; border-bottom-color: #667eea; }
-    .tab:hover:not(.active) { color: #2d3748; }
+    .tab.active { color: var(--act); border-bottom-color: var(--act); }
+    .tab:hover:not(.active) { color: var(--ink); }
 
     .modal-close {
       background: none;
       border: none;
       font-size: 1rem;
-      color: #a0aec0;
+      color: var(--ink-mute);
       cursor: pointer;
       padding: 8px 14px;
       margin: 6px 8px;
@@ -207,7 +234,7 @@
       line-height: 1;
       transition: color 0.15s, background 0.15s;
     }
-    .modal-close:hover { background: #e2e8f0; color: #2d3748; }
+    .modal-close:hover { background: var(--line); color: var(--ink); }
 
     .modal-body { padding: 20px; }
 
@@ -217,7 +244,7 @@
     .modal-body h3 {
       font-size: 0.72rem;
       font-weight: 600;
-      color: #a0aec0;
+      color: var(--ink-mute);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-bottom: 12px;
@@ -234,14 +261,14 @@
       gap: 10px;
       align-items: flex-start;
       font-size: 0.88rem;
-      color: #2d3748;
+      color: var(--ink);
       line-height: 1.5;
     }
     .rule-icon { flex-shrink: 0; font-size: 1rem; line-height: 1.4; }
 
     .modal-body p {
       font-size: 0.88rem;
-      color: #2d3748;
+      color: var(--ink);
       line-height: 1.65;
       margin-bottom: 12px;
     }
@@ -254,8 +281,8 @@
       bottom: 48px;
       left: 50%;
       transform: translateX(-50%) translateY(16px);
-      background: #2d3748;
-      color: white;
+      background: var(--ink);
+      color: var(--panel);
       padding: 8px 16px;
       border-radius: 8px;
       font-size: 0.82rem;
@@ -273,7 +300,7 @@
       bottom: 14px;
       right: 18px;
       font-size: 0.7rem;
-      color: #cbd5e0;
+      color: var(--ink-mute);
       opacity: 0.7;
       text-decoration: none;
       letter-spacing: 0.01em;
@@ -637,13 +664,13 @@ function renderBoard() {
       const x    = c * SQ, y = r * SQ;
 
       // Base colour
-      let fill = dark ? '#B58863' : '#F0D9B5';
+      let fill = dark ? '#9a8060' : '#ede1c2';
 
       // Last-move tint (warm amber) — only on dark squares, under selection
-      if (dark && lastMove && (i === lastMove.from || i === lastMove.to)) fill = '#C9A045';
+      if (dark && lastMove && (i === lastMove.from || i === lastMove.to)) fill = '#c9a045';
 
       // Selected square — overrides last-move tint
-      if (dark && selected === i) fill = '#7B9BD8';
+      if (dark && selected === i) fill = '#4a7a8a';
 
       svgEl.appendChild(svgEl$('rect', { x, y, width: SQ, height: SQ, fill }));
 
@@ -668,8 +695,8 @@ function renderBoard() {
     const red  = isRed(v);
     const king = isKing(v);
 
-    const fillC   = red ? '#C0392B' : '#2C3E50';
-    const strokeC = red ? '#E74C3C' : '#667EEA';
+    const fillC   = red ? '#9c3a28' : '#2a1c08';
+    const strokeC = red ? '#5a200f' : '#0a0804';
 
     // King-promotion flash ring (drawn behind the piece)
     if (flashKings.has(i)) {
@@ -713,7 +740,7 @@ function renderBoard() {
     const fl = svgEl$('text', {
       x: i * SQ + SQ - 4, y: 7 * SQ + SQ - 3,
       'text-anchor': 'end', 'font-size': 11, 'pointer-events': 'none',
-      fill: isDark(7, i) ? '#F0D9B5' : '#B58863'
+      fill: isDark(7, i) ? '#ede1c2' : '#9a8060'
     });
     fl.textContent = 'abcdefgh'[i];
     svgEl.appendChild(fl);
@@ -721,7 +748,7 @@ function renderBoard() {
     const rl = svgEl$('text', {
       x: 3, y: i * SQ + 13,
       'font-size': 11, 'pointer-events': 'none',
-      fill: isDark(i, 0) ? '#F0D9B5' : '#B58863'
+      fill: isDark(i, 0) ? '#ede1c2' : '#9a8060'
     });
     rl.textContent = 8 - i;
     svgEl.appendChild(rl);
@@ -753,7 +780,7 @@ function renderCaptures() {
   }
   if (redCaptures === 0 && blackCaptures === 0) {
     const none = document.createElement('span');
-    none.style.cssText = 'font-size:0.78rem;color:#a0aec0;';
+    none.style.cssText = 'font-size:0.78rem;color:var(--ink-mute);';
     none.textContent = 'none yet';
     bar.appendChild(none);
   }

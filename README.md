@@ -36,6 +36,12 @@ Play English draughts against a minimax AI — entirely in your browser. No inst
 | Dependencies | **Zero** |
 | Build step | **None** — open `index.html`, it works |
 
+## Palette
+
+Coloured with **`scandinavia-02 · LIN`** — Nordic flax linen, summer cottage. Warm cream body, deep-teal action accent, brick-red brand mark.
+
+Palette pulled from [**Rangrez**](https://github.com/NakliTechie/rangrez), the global colour-palette library that backs all NakliTechie projects.
+
 ## Part of the NakliTechie series
 
 | Tool | What it does |
